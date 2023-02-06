@@ -19,7 +19,7 @@ public class SessionController {
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 
-	@GetMapping("/{name}")
+	@GetMapping("/rabbit/{name}")
 	public String handleRequest(@PathVariable String name) {
 		rabbitTemplate.convertAndSend(QueueConfig.MESSAGE_QUEUE, name);
 		return "Hello " + name;
@@ -33,7 +33,7 @@ public class SessionController {
 	@GetMapping
 	@RequestMapping(value = "{id}")
 	public Session getById(@PathVariable Long id) {
-		return sessionRepository.getOne(id);
+		return sessionRepository.findById(id).get();
 	}
 
 	@PostMapping
@@ -49,7 +49,7 @@ public class SessionController {
 
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	public Session update(@PathVariable Long id, @RequestBody Session session) {
-		Session existSession = sessionRepository.getOne(id);
+		Session existSession = sessionRepository.findById(id).get();
 		BeanUtils.copyProperties(session, existSession, "session_id");
 		return sessionRepository.saveAndFlush(existSession);
 	}
