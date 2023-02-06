@@ -1,0 +1,7 @@
+package com.eya.getstarted.repository;
+
+import com.eya.getstarted.model.Session;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SessionRepository extends JpaRepository< Session,Long> {
+}
