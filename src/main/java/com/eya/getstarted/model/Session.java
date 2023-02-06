@@ -4,13 +4,15 @@ package com.eya.getstarted.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity(name = "sessions")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"HibernateLazyInitializer","handler"})
@@ -29,5 +31,7 @@ public class Session {
 	)
 	//@JsonIgnore
 	private List<Speaker> speakers;
+
+
 
 }

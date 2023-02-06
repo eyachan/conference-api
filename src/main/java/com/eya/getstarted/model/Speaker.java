@@ -4,16 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity(name = "speakers")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @JsonIgnoreProperties({"HibernateLazyInitializer", "handler", "ByteBuddyInterceptor"})
 public class Speaker {
 	@Id
@@ -30,4 +31,6 @@ public class Speaker {
 	@ManyToMany(mappedBy = "speakers")
 	@JsonIgnore
 	private List<Session> sessions;
+
+
 }
