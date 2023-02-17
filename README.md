@@ -6,6 +6,8 @@ api to create session and their speakers
 - maven
 - java 17
 - rabbitMQ
+- zipkin
+- springboot security
 
 # Run docker compose to initialize the environment
 
@@ -19,3 +21,9 @@ docker-compose -it up
 ```http request
 http://localhost:15672
 ```
+# to monitor requests 
+
+```http request
+http://localhost:9411
+```
+# for the security just use admin and password 

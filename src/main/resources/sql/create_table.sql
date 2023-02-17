@@ -126,3 +126,13 @@ CREATE TABLE workshop_registrations
     workshop_id        integer NOT NULL REFERENCES workshops (workshop_id),
     attendee_ticket_id integer NOT NULL REFERENCES attendee_tickets (attendee_ticket_id)
 );
+create table users (
+                       username varchar(256),
+                       password varchar(256),
+                       enabled boolean
+);
+
+create table authorities (
+                             username varchar(256),
+                             authority varchar(256)
+);

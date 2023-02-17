@@ -18,3 +18,8 @@ services:
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: 'zipkin'
+    ports:
+      - "9411:9411"

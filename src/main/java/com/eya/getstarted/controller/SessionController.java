@@ -6,8 +6,11 @@ import com.eya.getstarted.repository.SessionRepository;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -23,6 +26,12 @@ public class SessionController {
 	public String handleRequest(@PathVariable String name) {
 		rabbitTemplate.convertAndSend(QueueConfig.MESSAGE_QUEUE, name);
 		return "Hello " + name;
+	}
+
+	@GetMapping("/security")
+	public String getUser(Principal user) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return "Hello " + authentication.getName();
 	}
 
 	@GetMapping
